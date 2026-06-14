@@ -1,0 +1,93 @@
+# pnpm-workspace.yaml
+
+packages:
+  - "."
+
+# =========================================================
+# Seguridad: scripts de instalación
+# =========================================================
+
+# Bloquea scripts de lifecycle durante instalación:
+# preinstall, install, postinstall, prepare, etc.
+#
+# Esto reduce riesgo ante paquetes comprometidos que ejecutan código
+# al instalarse.
+ignoreScripts: true
+
+# Evita que pnpm ejecute automáticamente scripts pre/post de tus propios comandos.
+# Ejemplo: pnpm dev no debería disparar predev/postdev automáticamente.
+enablePrePostScripts: false
+
+# Falla la instalación si hay dependencias con scripts de build no aprobados.
+# Útil para detectar paquetes que intentan compilar/descargar binarios.
+strictDepBuilds: true
+
+# Nunca permitir todos los builds automáticamente.
+# Mantener esto en false.
+dangerouslyAllowAllBuilds: false
+
+# Lista explícita de paquetes autorizados o denegados para ejecutar builds.
+# En pnpm v11+, allowBuilds reemplaza configuraciones legacy como
+# onlyBuiltDependencies / neverBuiltDependencies.
+#
+# Déjalo vacío al inicio. Luego aprueba solo lo necesario con:
+# pnpm approve-builds
+allowBuilds: {}
+
+# =========================================================
+# Seguridad: estabilidad contra paquetes recién publicados
+# =========================================================
+
+# Evita instalar versiones publicadas hace muy poco.
+# Esto mitiga ataques donde una versión maliciosa se publica y se retira rápido.
+#
+# Valor en minutos.
+# 1440 = 24 horas.
+minimumReleaseAge: 1440
+
+# Si algún paquete interno tuyo necesita instalarse inmediatamente
+# después de publicarse, podrías excluirlo aquí.
+minimumReleaseAgeExclude: []
+
+# =========================================================
+# Seguridad: resolución estricta
+# =========================================================
+
+# Evita instalar dependencias fantasma no declaradas correctamente.
+strictPeerDependencies: true
+
+# No resuelve automáticamente peer dependencies faltantes.
+# Obliga a declarar lo necesario.
+autoInstallPeers: false
+
+# Evita que pnpm aplique automáticamente resoluciones laxas de peers.
+resolvePeersFromWorkspaceRoot: true
+
+# =========================================================
+# Optimización / consistencia
+# =========================================================
+
+# Usa lockfile. No lo desactives.
+lockfile: true
+
+# Mantiene un lockfile compartido en workspaces.
+sharedWorkspaceLockfile: true
+
+# Deduplica dependencias dentro del lockfile cuando sea posible.
+dedupePeerDependents: true
+
+# Preferir paquetes ya existentes en el store local cuando sea viable.
+preferOffline: true
+
+# Evita progreso ruidoso en CI/logs.
+reporter: append-only
+
+# =========================================================
+# Gestión del package manager
+# =========================================================
+
+# Recomendado si tu package.json tiene:
+# "packageManager": "pnpm@x.y.z"
+#
+# Hace que pnpm respete esa versión mediante Corepack cuando aplique.
+managePackageManagerVersions: true
