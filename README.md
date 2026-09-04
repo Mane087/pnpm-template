@@ -1,4 +1,4 @@
-# Configuración segura de pnpm
+# Configuración segura de pnpm v11.25.0
 
 Este documento describe la configuración aplicada en `pnpm-workspace.yaml` para endurecer la instalación de dependencias, reducir riesgos por scripts maliciosos y mantener un comportamiento más controlado del gestor de paquetes.
 
