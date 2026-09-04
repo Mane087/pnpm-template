@@ -1,6 +1,6 @@
 # Configuración segura de pnpm v11.25.0
 
-🇲🇽 [ES](https://github.com/Mane087/pnpm-template) | 🇺🇸 [US](https://github.com/Mane087/pnpm-template/README_US.md)
+🇲🇽 [ES](https://github.com/Mane087/pnpm-template) | 🇺🇸 [US](https://github.com/Mane087/pnpm-template/blob/main/README_US.md)
 
 Este documento describe la configuración aplicada en `pnpm-workspace.yaml` para endurecer la instalación de dependencias, reducir riesgos por scripts maliciosos y mantener un comportamiento más controlado del gestor de paquetes.
 
