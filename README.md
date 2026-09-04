@@ -49,7 +49,7 @@ reporter: append-only
 # Gestión del package manager
 # =========================================================
 
-managePackageManagerVersions: true
+pmOnFail: download
 ```
 
 ---
